@@ -44,7 +44,8 @@ class RecyclerNewsAdapter(val context: Context, val arrNews: List<Article>) :
                 context.startActivity(
                     Intent(context, NewsDetailsActivity::class.java)
                         .putExtra("NewsHeadline", data.title)
-                        .putExtra("NewsDescription", data.content)
+                        .putExtra("NewsDescription", data.description)
+                        .putExtra("NewsContent", data.content)
                         .putExtra("NewsName", data.source.name)
                         .putExtra("NewsPublishDate", data.publishedAt)
                         .putExtra("NewsImage", data.urlToImage)

@@ -19,14 +19,15 @@ class NewsDetailsActivity : AppCompatActivity() {
             val intent = intent
             val newsHeadline = intent.getStringExtra("NewsHeadline")
             val newsDescription = intent.getStringExtra("NewsDescription")
+            val newsContent = intent.getStringExtra("NewsContent")
             val name = intent.getStringExtra("NewsName")
             val publishDate = intent.getStringExtra("NewsPublishDate")
             val newsImage = intent.getStringExtra("NewsImage")
             val url = intent.getStringExtra("NewsUrl")
 
-            txtNewsHeadline.text = newsHeadline
+            txtNewsHeadline.text = newsDescription
             txtTitle.text = newsHeadline
-            txtDescription.text = newsDescription
+            txtDescription.text = newsContent
             txtName.text = name
             txtPublishDate.text = publishDate
             Picasso.get().load(newsImage).into(imgMain)

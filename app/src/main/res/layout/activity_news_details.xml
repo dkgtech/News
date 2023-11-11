@@ -37,7 +37,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvViewImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
@@ -101,7 +101,7 @@
 
     <TextView
         android:id="@+id/txtNewsHeadline"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
@@ -114,7 +114,7 @@
 
     <TextView
         android:id="@+id/txtDescription"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
