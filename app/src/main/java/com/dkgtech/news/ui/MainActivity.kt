@@ -3,8 +3,11 @@ package com.dkgtech.news.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.dkgtech.news.API.NewsApiInterface
+import com.dkgtech.news.R
 import com.dkgtech.news.adapter.RecyclerNewsAdapter
 import com.dkgtech.news.databinding.ActivityMainBinding
 import com.dkgtech.news.model.NewsModel
@@ -16,14 +19,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         with(binding) {
+            swipeRefreshLayout = findViewById(R.id.swipeLayout)
 
             fetchNews("technology")
             searchNews()
+
+            swipeLayout.setOnRefreshListener {
+                fetchNews("technology")
+            }
 
         }
     }
@@ -36,8 +45,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 return true
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
-               return true
+                return true
             }
 
         })
@@ -65,10 +75,16 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<NewsModel>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(
+                    this@MainActivity,
+                    "Check Your Internet Connection",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         })
+
+        swipeRefreshLayout.isRefreshing = false
 
     }
 }
